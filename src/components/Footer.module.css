@@ -1,0 +1,133 @@
+.footer {
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.82);
+  padding-block: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: clamp(1.6rem, 4vw, 3rem);
+  align-items: start;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brandText strong {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--white);
+}
+
+.brandText small {
+  font-size: 0.82rem;
+  color: var(--yellow);
+}
+
+.tagline {
+  margin-top: 0.9rem;
+  max-width: 42ch;
+  font-size: 0.96rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.social {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
+
+.socialBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  transition:
+    background-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.socialBtn:hover {
+  background: var(--teal);
+  transform: translateY(-2px);
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.colTitle {
+  color: var(--yellow);
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+}
+
+.link {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1rem;
+  width: fit-content;
+  transition: color 0.18s ease;
+}
+
+.link:hover {
+  color: var(--yellow);
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 1.4rem;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.credit {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 720px) {
+  .top {
+    grid-template-columns: 1fr 1fr;
+  }
+  .brandCol {
+    grid-column: 1 / -1;
+  }
+  .bottom {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 460px) {
+  .top {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .socialBtn:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,91 @@
+.intro {
+  background: var(--cream);
+  overflow: hidden;
+}
+
+.grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title {
+  margin-top: 1.1rem;
+  font-size: clamp(1.9rem, 4.3vw, 3.2rem);
+  line-height: 1.12;
+  color: var(--orange);
+}
+
+.name {
+  color: var(--teal-deep);
+  white-space: nowrap;
+}
+
+.lead {
+  margin-top: 1.2rem;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  color: var(--ink-muted);
+  max-width: 48ch;
+}
+
+.actions {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+/* ----- מדיה ----- */
+.media {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.blob {
+  position: absolute;
+  inset: -8% -6% -6% -6%;
+  background: radial-gradient(
+    60% 60% at 70% 30%,
+    var(--teal-soft),
+    transparent 70%
+  );
+  border-radius: 40% 55% 50% 45%;
+  z-index: -1;
+}
+
+.photo {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 6px solid var(--white);
+  object-fit: cover;
+  aspect-ratio: 16 / 10;
+}
+
+/* ----- רספונסיביות ----- */
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+  }
+  .text {
+    align-items: center;
+    text-align: center;
+  }
+  .media {
+    order: -1;
+  }
+  .lead {
+    margin-inline: auto;
+  }
+}

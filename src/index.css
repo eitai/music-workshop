@@ -1,0 +1,274 @@
+/* ============================================================
+   סדנת הקצב — מערכת עיצוב גלובלית (Design System)
+   פלטה חמה ומשחקית, טיפוגרפיה עברית, RTL.
+   ============================================================ */
+
+:root {
+  /* --- פלטה: כתום + טורקיז (מיתוג "שי בקצב") --- */
+  --cream: #fffaf4; /* רקע חמים בהיר */
+  --cream-deep: #fdf1e4; /* רקע משני חמים יותר */
+  --orange: #ef8022; /* אקצנט ראשי — כותרות, לוגו */
+  --orange-deep: #d76d12; /* כתום כהה ל-hover */
+  --orange-soft: #fbe4cb;
+  --yellow: #ffc857;
+  --yellow-soft: #ffe2a8;
+  --teal: #1ea7a2; /* אקצנט שני — כפתורי CTA */
+  --teal-deep: #18908b;
+  --teal-soft: #cdebe9;
+  --navy: #2a4d69; /* צבע עומק (פוטר) */
+  --green: #88b04b;
+  --white: #ffffff;
+
+  /* --- טקסט --- */
+  --ink: #34414c;
+  --ink-muted: #6a7682;
+
+  /* --- טיפוגרפיה --- */
+  --font-display: "Fredoka", "Varela Round", "Heebo", system-ui, sans-serif;
+  --font-body: "Heebo", "Assistant", system-ui, -apple-system, sans-serif;
+
+  /* --- מידות --- */
+  --container: 1180px;
+  --radius-sm: 12px;
+  --radius: 20px;
+  --radius-lg: 32px;
+  --radius-pill: 999px;
+
+  /* --- צללים רכים --- */
+  --shadow-sm: 0 4px 14px rgba(42, 77, 105, 0.08);
+  --shadow: 0 14px 40px rgba(42, 77, 105, 0.12);
+  --shadow-lg: 0 28px 70px rgba(42, 77, 105, 0.18);
+  --shadow-orange: 0 14px 34px rgba(239, 128, 34, 0.32);
+  --shadow-teal: 0 14px 34px rgba(30, 167, 162, 0.3);
+
+  /* --- מרווחי סקשן --- */
+  --section-y: clamp(4.5rem, 9vw, 8rem);
+
+  color-scheme: light;
+}
+
+/* --- Reset --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--cream);
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: clamp(1rem, 0.6vw + 0.9rem, 1.125rem);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.12;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+
+/* --- Focus נראה לכל אלמנט אינטראקטיבי (נגישות) --- */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ============================================================
+   עזרי פריסה משותפים
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(1.15rem, 4vw, 2.5rem);
+}
+
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--orange-deep);
+  background: var(--white);
+  border: 2px solid var(--orange-soft);
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+}
+
+.section-title {
+  font-size: clamp(1.9rem, 4.4vw, 3.1rem);
+  margin-top: 1rem;
+  max-width: 22ch;
+  color: var(--orange);
+}
+
+.section-lead {
+  margin-top: 1rem;
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  color: var(--ink-muted);
+  max-width: 56ch;
+}
+
+/* כותרת ממורכזת לסקשן */
+.section-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section-head .section-title,
+.section-head .section-lead {
+  margin-inline: auto;
+}
+
+/* ============================================================
+   כפתורים
+   ============================================================ */
+
+.btn {
+  --btn-bg: var(--teal);
+  --btn-fg: var(--white);
+  --btn-shadow: var(--shadow-teal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.08rem;
+  line-height: 1;
+  padding: 1rem 1.9rem;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  cursor: pointer;
+  box-shadow: var(--btn-shadow);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease;
+  text-align: center;
+}
+
+.btn--orange {
+  --btn-bg: var(--orange);
+  --btn-shadow: var(--shadow-orange);
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.btn--lg {
+  font-size: 1.2rem;
+  padding: 1.15rem 2.3rem;
+}
+
+.btn--ghost {
+  --btn-bg: var(--white);
+  --btn-fg: var(--navy);
+  box-shadow: var(--shadow-sm);
+  border: 2px solid rgba(42, 77, 105, 0.12);
+}
+
+.btn--whatsapp {
+  --btn-bg: #25d366;
+  --btn-fg: #ffffff;
+  box-shadow: 0 14px 34px rgba(37, 211, 102, 0.32);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn:hover {
+    transform: none;
+  }
+}
+
+/* כלי עזר לנגישות: טקסט רק לקוראי מסך */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* דילוג לתוכן (skip link) */
+.skip-link {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: -100px;
+  z-index: 1000;
+  background: var(--navy);
+  color: var(--white);
+  padding: 0.7rem 1.2rem;
+  border-radius: var(--radius-sm);
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}

@@ -1,0 +1,214 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  /* פוסטר כרקע fallback — כך לעולם לא מבצבץ "מסך כחול" אם פריים עדיין לא נטען */
+  background: var(--navy) url("/hero-poster.webp") 63% 45% / cover no-repeat;
+  isolation: isolate;
+}
+
+.canvas,
+.poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 63% 45%; /* ממקד את שי במרכז (חשוב בנייד) */
+  z-index: 0;
+}
+
+/* שכבת קריאות מעל הוידאו — כהה בתחתית, שקופה למעלה. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to top,
+      rgba(20, 38, 54, 0.82) 0%,
+      rgba(20, 38, 54, 0.36) 34%,
+      rgba(20, 38, 54, 0.08) 60%,
+      rgba(20, 38, 54, 0.28) 100%
+    );
+}
+
+/* ----------------------------- כיתוב ----------------------------- */
+.overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--white);
+  padding: 0 clamp(1.2rem, 5vw, 2rem)
+    clamp(3.5rem, 9vh, 6rem);
+  max-width: 880px;
+  will-change: opacity, transform;
+}
+
+.kicker {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  font-size: clamp(0.85rem, 1.6vw, 1.05rem);
+  color: var(--yellow);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  margin-bottom: 0.9rem;
+}
+
+.title {
+  color: var(--white);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 8vw, 5.6rem);
+  line-height: 1.02;
+  text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+}
+
+.subtitle {
+  margin: 1.1rem auto 0;
+  max-width: 40ch;
+  font-size: clamp(1.05rem, 2.4vw, 1.5rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+}
+
+.cta {
+  margin-top: 1.9rem;
+}
+
+/* רמז גלילה */
+.scrollHint {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 2rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  animation: heroBob 1.8s ease-in-out infinite;
+}
+
+@keyframes heroBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+/* ----------------------------- מסך טעינה ----------------------------- */
+.loader {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  background: radial-gradient(
+      120% 120% at 50% 30%,
+      #34597a 0%,
+      var(--navy) 70%
+    );
+  color: var(--white);
+}
+
+.loaderBeats {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.loaderBeats span {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--yellow);
+  animation: beatPulse 1s ease-in-out infinite;
+}
+
+.loaderBeats span:nth-child(1) {
+  background: var(--orange);
+  animation-delay: 0s;
+}
+.loaderBeats span:nth-child(2) {
+  background: var(--yellow);
+  animation-delay: 0.18s;
+}
+.loaderBeats span:nth-child(3) {
+  background: var(--green);
+  animation-delay: 0.36s;
+}
+
+@keyframes beatPulse {
+  0%,
+  100% {
+    transform: scale(0.7);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+.loaderText {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.loaderBar {
+  width: min(260px, 70vw);
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+
+.loaderFill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--orange), var(--yellow));
+  transition: width 0.25s ease;
+}
+
+.loaderPct {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.loaderSkip {
+  margin-top: 0.4rem;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 0.18s ease;
+}
+
+.loaderSkip:hover {
+  color: var(--yellow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollHint,
+  .loaderBeats span {
+    animation: none;
+  }
+}

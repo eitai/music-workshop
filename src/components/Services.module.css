@@ -1,0 +1,224 @@
+.services {
+  background: var(--cream-deep);
+}
+
+.head {
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* ----- שורת ההצעות (4 כרטיסים) ----- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.6rem);
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(42, 77, 105, 0.05);
+  padding-bottom: 1.4rem;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+
+.thumb {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--cream-deep);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 28%;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .thumb img {
+  transform: scale(1.06);
+}
+
+.cardTitle {
+  font-size: 1.3rem;
+  color: var(--teal-deep);
+  margin: 1.1rem 1.3rem 0.4rem;
+}
+
+.cardText {
+  color: var(--ink-muted);
+  font-size: 0.98rem;
+  margin: 0 1.3rem;
+  line-height: 1.55;
+}
+
+/* ----- אירועים פרטיים ----- */
+.subHead {
+  text-align: center;
+  color: var(--orange);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: clamp(2.8rem, 5vw, 4rem) 0 1.8rem;
+}
+
+.eventsRow {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: clamp(1rem, 2vw, 1.6rem);
+  align-items: stretch;
+}
+
+/* כרטיסי "מופע מוזיקלי" / "סאונד הילינג" */
+.feature {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(42, 77, 105, 0.05);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.feature:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+
+.featureThumb {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.featureThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 25%;
+  transition: transform 0.5s ease;
+}
+
+.feature:hover .featureThumb img {
+  transform: scale(1.06);
+}
+
+.featureBody {
+  padding: 1.2rem 1.4rem 1.5rem;
+}
+
+.featureBody .cardTitle,
+.featureBody .cardText {
+  margin-inline: 0;
+}
+
+/* רשת 2x2 של סוגי אירועים */
+.eventGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(0.7rem, 1.4vw, 1rem);
+}
+
+.event {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(42, 77, 105, 0.05);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.event:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.eventThumb {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--cream-deep);
+}
+
+.eventThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 28%;
+  transition: transform 0.5s ease;
+}
+
+.event:hover .eventThumb img {
+  transform: scale(1.06);
+}
+
+.eventLabel {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.98rem;
+  color: var(--navy);
+  text-align: center;
+  padding: 0.7rem 0.5rem 0.9rem;
+}
+
+/* ----- רספונסיביות ----- */
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .eventsRow {
+    grid-template-columns: 1fr 1fr;
+  }
+  .eventGrid {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(4, 1fr);
+    order: 3;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+  }
+  .cardTitle {
+    font-size: 1.05rem;
+    margin-inline: 0.9rem;
+  }
+  .cardText {
+    font-size: 0.88rem;
+    margin-inline: 0.9rem;
+  }
+  .eventsRow {
+    grid-template-columns: 1fr;
+  }
+  .eventGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover,
+  .feature:hover,
+  .event:hover {
+    transform: none;
+  }
+  .card:hover .thumb img,
+  .feature:hover .featureThumb img,
+  .event:hover .eventThumb img {
+    transform: none;
+  }
+}

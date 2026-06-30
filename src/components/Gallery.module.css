@@ -1,0 +1,58 @@
+.gallery {
+  background: linear-gradient(180deg, var(--cream-deep) 0%, var(--cream) 100%);
+}
+
+.head {
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(0.7rem, 1.4vw, 1.1rem);
+}
+
+.item {
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--cream-deep);
+  aspect-ratio: 3 / 4; /* תמונות לאורך (טלפון) */
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.item:hover img {
+  transform: scale(1.07);
+}
+
+/* ----- רספונסיביות ----- */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item:hover img {
+    transform: none;
+  }
+}

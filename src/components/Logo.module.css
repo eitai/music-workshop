@@ -1,0 +1,29 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.badge {
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 10px rgba(239, 128, 34, 0.25));
+}
+
+.word {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--orange);
+}
+
+.sub {
+  font-size: 0.72rem;
+  color: var(--teal-deep);
+  font-weight: 500;
+}
