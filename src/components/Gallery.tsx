@@ -1,3 +1,4 @@
+import { asset } from "../lib/asset";
 import styles from "./Gallery.module.css";
 
 /**
@@ -33,7 +34,7 @@ export default function Gallery() {
           {PHOTOS.map((p) => (
             <figure key={p.src} className={styles.item}>
               <img
-                src={p.src}
+                src={asset(p.src)}
                 alt={p.alt}
                 loading="lazy"
                 decoding="async"

@@ -1,4 +1,5 @@
 import { site } from "../config";
+import { asset } from "../lib/asset";
 import styles from "./About.module.css";
 
 const TAGS = ["תופי ג'מבה", "תיפוף גוף", "סאונד הילינג", "מעגלי קצב", "אירועים"];
@@ -37,7 +38,7 @@ export default function About() {
             <span className={styles.ring} aria-hidden="true" />
             <img
               className={styles.photo}
-              src="/photos/portrait.webp"
+              src={asset("/photos/portrait.webp")}
               alt={`${site.teacher} — מנחה סדנאות התיפוף`}
               loading="lazy"
               decoding="async"

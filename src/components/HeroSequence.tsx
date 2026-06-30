@@ -8,6 +8,7 @@ import {
   buildFramePaths,
   isMobileViewport,
 } from "../lib/frames";
+import { asset } from "../lib/asset";
 import { usePreloadFrames } from "../hooks/usePreloadFrames";
 import styles from "./HeroSequence.module.css";
 
@@ -171,12 +172,13 @@ export default function HeroSequence() {
       className={styles.hero}
       id="hero"
       aria-label="כותרת ראשית — סדנת מוזיקה לילדים"
+      style={{ backgroundImage: `url("${asset(POSTER_SRC)}")` }}
     >
       {/* רקע: בזמן reduced-motion מציגים פוסטר סטטי, אחרת canvas. */}
       {reduced ? (
         <img
           className={styles.poster}
-          src={POSTER_SRC}
+          src={asset(POSTER_SRC)}
           alt="מורה מנגן על תוף ג'מבה במעגל של ילדים מריעים בסדנת מוזיקה"
         />
       ) : (

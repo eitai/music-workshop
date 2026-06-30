@@ -1,4 +1,5 @@
 import { site } from "../config";
+import { asset } from "../lib/asset";
 import BeatField from "./BeatField";
 import styles from "./IntroBand.module.css";
 
@@ -37,7 +38,7 @@ export default function IntroBand() {
             <span className={styles.blob} aria-hidden="true" />
             <img
               className={styles.photo}
-              src="/photos/p06.webp"
+              src={asset("/photos/p06.webp")}
               alt="שי פריזנר מנגן בתוף במעגל של ילדים בסדנת מוזיקה"
               loading="lazy"
               decoding="async"

@@ -1,3 +1,4 @@
+import { asset } from "../lib/asset";
 import styles from "./Services.module.css";
 
 /**
@@ -59,7 +60,7 @@ function OfferingCard({ c }: { c: Card }) {
   return (
     <article className={styles.card}>
       <div className={styles.thumb}>
-        <img src={c.img} alt={c.alt} loading="lazy" decoding="async" width={760} height={570} />
+        <img src={asset(c.img)} alt={c.alt} loading="lazy" decoding="async" width={760} height={570} />
       </div>
       <h3 className={styles.cardTitle}>{c.title}</h3>
       <p className={styles.cardText}>{c.text}</p>
@@ -71,7 +72,7 @@ function FeatureCard({ c }: { c: Card }) {
   return (
     <article className={styles.feature}>
       <div className={styles.featureThumb}>
-        <img src={c.img} alt={c.alt} loading="lazy" decoding="async" width={760} height={570} />
+        <img src={asset(c.img)} alt={c.alt} loading="lazy" decoding="async" width={760} height={570} />
       </div>
       <div className={styles.featureBody}>
         <h3 className={styles.cardTitle}>{c.title}</h3>
@@ -111,7 +112,7 @@ export default function Services() {
               <li key={e.label} className={styles.event}>
                 <div className={styles.eventThumb}>
                   <img
-                    src={e.img}
+                    src={asset(e.img)}
                     alt={e.alt}
                     loading="lazy"
                     decoding="async"

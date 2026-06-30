@@ -8,8 +8,12 @@
   height: 100svh;
   min-height: 560px;
   overflow: hidden;
-  /* פוסטר כרקע fallback — כך לעולם לא מבצבץ "מסך כחול" אם פריים עדיין לא נטען */
-  background: var(--navy) url("/hero-poster.webp") 63% 45% / cover no-repeat;
+  /* פוסטר כרקע fallback (background-image נקבע inline עם ה-base הנכון) —
+     כך לעולם לא מבצבץ "מסך כחול" אם פריים עדיין לא נטען */
+  background-color: var(--navy);
+  background-position: 63% 45%;
+  background-size: cover;
+  background-repeat: no-repeat;
   isolation: isolate;
 }
 
