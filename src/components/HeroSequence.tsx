@@ -92,6 +92,9 @@ export default function HeroSequence() {
         h = cw / ir;
         y = Math.min(0, Math.max(ch - h, ch / 2 - FOCUS_Y * h));
       }
+      // החלקה איכותית בהגדלה (canvas.width מאפס את ההגדרה, לכן קובעים כאן)
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = "high";
       ctx.drawImage(img, x, y, w, h);
     };
 
